@@ -7,32 +7,21 @@
 
 import XCTest
 
+
+//@testable overrides access rights in Swift, allowing you to test internal methods in unit tests.
+//According to Apple DocumentationNote:
+//@testable provides access only for “internal” functions;
+//“private” declarations are not visible outside of their file even when using @testable.
 @testable import UserObject
+
 
 class UserObjectTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
     func test() {
-        let sut = User()
+        //sut = System Under Test
+        let sut = User(firstName:"Anderson", lastName:"Tagata")
+        
+        XCTAssertEqual(sut.fullName(), "Anderson Tagata")
     }
 
 }
