@@ -9,7 +9,7 @@ import Foundation
  
 class User {
     
-    private let firstName : String
+    private var firstName : String //mutable property must be var
     private let lastName : String
     
     init(){
@@ -20,6 +20,11 @@ class User {
     init(firstName: String, lastName: String){
         self.firstName = firstName
         self.lastName = lastName
+    }
+    
+    //mutable property
+    func set(firstName: String) {
+        self.firstName = firstName
     }
     
     func fullName() -> String {

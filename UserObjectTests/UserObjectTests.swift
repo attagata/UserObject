@@ -17,11 +17,22 @@ import XCTest
 
 class UserObjectTests: XCTestCase {
 
-    func test() {
+    func testFullnameCombinationOfFirstAndLastName() {
+        
         //sut = System Under Test
         let sut = User(firstName:"Anderson", lastName:"Tagata")
         
         XCTAssertEqual(sut.fullName(), "Anderson Tagata")
+    }
+
+    func testCanUpdateFirstName() {
+        
+        //sut = System Under Test
+        let sut = User(firstName:"Anderson", lastName:"Tagata")
+        
+        sut.set(firstName:"Dear")
+        
+        XCTAssertEqual(sut.fullName(), "Dear Tagata")
     }
 
 }
