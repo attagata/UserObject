@@ -34,5 +34,18 @@ class UserObjectTests: XCTestCase {
         
         XCTAssertEqual(sut.fullName(), "Dear Tagata")
     }
-
+    
+    // Testing inheritance SpecialUser class from User class
+    func testSpecialUserFullName() {
+        
+        //sut = System Under Test
+        let sut = SpecialUser(firstName:"Anderson", lastName:"Tagata")
+        
+        // Can change property without override it
+        // sut.set(firstName:"Dear")
+        
+        XCTAssertEqual(sut.fullName(), "Anderson Tagata [Special]")
+    }
 }
+
+

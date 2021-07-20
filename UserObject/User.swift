@@ -32,3 +32,18 @@ class User {
     }
     
 }
+
+//Example of Inheritance
+class SpecialUser : User {
+    
+    //Override Sample
+    override func fullName() -> String {
+        if(super.fullName() == "Anderson Tagata"){
+           return super.fullName() + " [Special]"
+        }
+        else{
+            return super.fullName()
+        }
+    }
+    
+}

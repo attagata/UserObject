@@ -5,6 +5,7 @@ Object Classes practice with tests. MACOS/SWIFT/XCTEST
 ## Encapsulation
 ## Polymorphism
 ## Class
+## inheritance
 ## Initializer
 ## State
 
