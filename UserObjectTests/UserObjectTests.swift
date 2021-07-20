@@ -28,7 +28,7 @@ class UserObjectTests: XCTestCase {
     func testCanUpdateFirstName() {
         
         //sut = System Under Test
-        let sut = User(firstName:"Anderson", lastName:"Tagata")
+        let sut = makeUser(firstName:"Anderson", lastName:"Tagata")
         
         sut.set(firstName:"Dear")
         
@@ -39,13 +39,26 @@ class UserObjectTests: XCTestCase {
     func testSpecialUserFullName() {
         
         //sut = System Under Test
-        let sut = SpecialUser(firstName:"Anderson", lastName:"Tagata")
+        let sut = makeSpecialUser(firstName:"Anderson", lastName:"Tagata")
         
         // Can change property without override it
         // sut.set(firstName:"Dear")
         
         XCTAssertEqual(sut.fullName(), "Anderson Tagata [Special]")
     }
+    
+    
+    // MARK: - Helpers
+
+    private func makeUser(firstName: String, lastName: String) -> User {
+        return User(firstName: firstName, lastName: lastName)
+    }
+
+    private func makeSpecialUser(firstName: String, lastName: String) -> SpecialUser {
+        return SpecialUser(firstName: firstName, lastName: lastName)
+    }
+    
 }
+
 
 
