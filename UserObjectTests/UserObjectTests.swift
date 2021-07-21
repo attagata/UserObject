@@ -30,7 +30,11 @@ class UserObjectTests: XCTestCase {
         //sut = System Under Test
         let sut = makeUser(firstName:"Anderson", lastName:"Tagata")
         
-        sut.set(firstName:"Dear")
+        // Error: Value of tuple type '(setFirstName: (String) -> Void, fullName: () -> String)' has no member 'set'
+        // sut.set(firstName:"Dear")
+        // Refactoring:
+        sut.setFirstName("Dear")
+        
         
         XCTAssertEqual(sut.fullName(), "Dear Tagata")
     }
@@ -44,18 +48,22 @@ class UserObjectTests: XCTestCase {
         // Can change property without override it
         // sut.set(firstName:"Dear")
         
-        XCTAssertEqual(sut.fullName(), "Anderson Tagata [Special]")
+        XCTAssertEqual(sut.fullName(), "Anderson Tagata [SPECIAL]")
     }
     
     
     // MARK: - Helpers
 
-    private func makeUser(firstName: String, lastName: String) -> User {
-        return User(firstName: firstName, lastName: lastName)
-    }
+//    private func makeUser(firstName: String, lastName: String) -> User {
+//        return User(firstName: firstName, lastName: lastName)
+//    }
 
-    private func makeSpecialUser(firstName: String, lastName: String) -> SpecialUser {
-        return SpecialUser(firstName: firstName, lastName: lastName)
+    private func makeUser(firstName: String, lastName: String) -> (setFirstName: (String) -> Void, fullName: () -> String) {
+        return makeUserObject(firstName: firstName, lastName: lastName)
+    }
+    
+    private func makeSpecialUser(firstName: String, lastName: String) -> (setFirstName: (String) -> Void, fullName: () -> String) {
+        return makeSpecialUserObject(firstName: firstName, lastName: lastName)
     }
     
 }

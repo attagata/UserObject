@@ -47,3 +47,34 @@ class SpecialUser : User {
     }
     
 }
+
+func makeUserObject(firstName: String, lastName: String) -> (setFirstName: (String) -> Void, fullName: () -> String) {
+    
+    var _firstName = firstName
+    
+    return (
+        setFirstName : { newFirstName in
+        _firstName = newFirstName
+    },
+        fullName: {
+            return _firstName + " " + lastName
+
+    }
+    )
+}
+
+func makeSpecialUserObject(firstName: String, lastName: String) -> (setFirstName: (String) -> Void, fullName: () -> String) {
+    
+    var _firstName = firstName
+    
+    return (
+        setFirstName : { newFirstName in
+        _firstName = newFirstName
+    },
+        fullName: {
+            return _firstName + " " + lastName + " [SPECIAL]"
+
+    }
+    )
+}
+
